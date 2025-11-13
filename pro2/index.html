@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Civic Sense - Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    
+    <div class="login-container" id="loginScreen">
+        <h1>Civic Sense</h1>
+        <p id="message" class="error-message"></p>
+        <form id="loginForm">
+            <div class="input-group">
+                <label for="department">Select Department:</label>
+                <select id="department" required>
+                    <option value="" disabled selected>--- Choose your Department ---</option>
+                    <option value="General Administration">General Administration</option>
+                    <option value="Revenue & Tax">Revenue & Tax</option>
+                    <option value="Engineering & Public Works">Engineering & Public Works</option>
+                    <option value="Health & Sanitation">Health & Sanitation</option>
+                    <option value="Town Planning">Town Planning</option>
+                    <option value="Water Supply & Sewerage Department">Water Supply & Sewerage Department</option>
+                    <option value="Education">Education</option>
+                    <option value="IT & E-Governance">IT & E-Governance</option>
+                    <option value="Fire & Emergency Services">Fire & Emergency Services</option>
+                    <option value="Parks & Recreation">Parks & Recreation</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="id">User ID:</label>
+                <input type="text" id="id" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+            </div>
+
+            <button type="submit" class="login-button">Login</button>
+        </form>
+        <p id="welcome-message" class="welcome-message"></p>
+    </div>
+    <div class="welcome-content-container" id="dashboardScreen" style="display: none;">
+        <div class="welcome-header">
+            <a href="#" class="back-arrow" id="logoutButton">&#8592;</a>
+            <h2>Welcome</h2>
+        </div>
+
+        <div class="welcome-content">
+            <div class="department-card">
+                <div class="card-left">
+                    <i class="fas fa-university card-icon"></i>
+                </div>
+                <div class="card-center">
+                    <p class="dept-name" id="displayDepartmentName">Department Name</p> 
+                    <p class="admin-id">Admin ID: 72352525252</p>
+                </div>
+                <div class="card-right">
+                    <p class="total-label">Total</p>
+                    <p class="total-count" id="dashboardTotal">40</p>
+                </div>
+            </div>
+
+            <div class="issue-stats">
+                <div class="stat-box resolved">
+                    <p class="stat-count" id="dashboardResolved">20</p>
+                    <p class="stat-label">Resolved</p>
+                    <p class="stat-sublabel">Handled issues</p>
+                </div>
+                <div class="stat-box not-resolved">
+                    <p class="stat-count" id="dashboardPending">20</p>
+                    <p class="stat-label">Not Resolved</p>
+                    <p class="stat-sublabel">Pending issues</p>
+                </div>
+            </div>
+
+            <button class="go-to-dept-button" id="goToDeptButton">
+                <i class="fas fa-sign-in-alt"></i> Go to Department
+            </button>
+        </div>
+    </div>
+    <div class="issue-list-container" id="issueListScreen" style="display: none;">
+        <div class="welcome-header">
+            <a href="#" class="back-arrow" id="backToDashboardButton">&#8592;</a>
+            <h2 id="issueListHeader"></h2> </div>
+
+        <div class="issue-content" id="issueContent">
+            </div>
+    </div>
+    <div class="query-details-container" id="queryDetailScreen" style="display: none;">
+        <div class="welcome-header">
+            <a href="#" class="back-arrow" id="backToIssueListButton">&#8592;</a>
+            <h2 id="queryDetailHeader"></h2> </div>
+
+        <div class="query-content" id="queryContent">
+            </div>
+    </div>
+    <div class="query-list-container" id="queryListScreen" style="display: none;">
+        <div class="welcome-header">
+            <a href="#" class="back-arrow" id="backToQueryDetailButton">&#8592;</a>
+            <h2 id="queryListHeader"></h2> </div>
+
+        <div class="query-list-content" id="queryListContent">
+            </div>
+    </div>
+    <div class="drone-control-container" id="droneControlScreen" style="display: none;">
+        <div class="welcome-header">
+            <a href="#" class="back-arrow" id="backToQueryListButton">&#8592;</a>
+            <h2 id="droneControlHeader">Drone Controls</h2>
+        </div>
+
+        <div class="drone-content">
+            <div class="drone-status-header">
+                <p id="droneIssueSummary" class="issue-summary-text"></p>
+                <p id="droneLocation" class="location-text"></p>
+                
+                <div class="status-indicators">
+                    <span id="droneResolvedStatus" class="resolved-status"></span>
+                    <span id="droneCurrentStatus" class="status-idle">Status: Idle</span>
+                </div>
+
+                <div class="verification-status-box">
+                    <p class="worker-info" id="droneWorkerInfo"></p>
+                    <p class="verification-info" id="droneVerificationStatus"></p>
+                </div>
+            </div>
+
+            <div class="live-feed-box">
+                Live Camera Feed (Simulated)
+            </div>
+
+            <div class="drone-specs-card">
+                <h3>Drone Specifications</h3>
+                <div class="spec-row">
+                    <span>Battery</span>
+                    <span id="droneBattery">100%</span>
+                </div>
+                <div class="spec-row">
+                    <span>Speed</span>
+                    <span id="droneSpeed">0.0 m/s</span>
+                </div>
+                <div class="spec-row">
+                    <span>GPS</span>
+                    <span id="droneGPS">Not Locked</span>
+                </div>
+                <div class="battery-bar-container">
+                    <div id="droneBatteryBar" class="battery-bar"></div>
+                </div>
+            </div>
+
+            <div class="simple-controls-pad">
+                <div class="control-row-directional">
+                    <div class="spacer"></div>
+                    <button class="control-btn" data-command="Up"><i class="fas fa-arrow-up"></i> Up</button>
+                    <div class="spacer"></div>
+                    <button class="control-btn" data-command="Left"><i class="fas fa-arrow-left"></i> Left</button>
+                    <button class="control-btn control-btn-stop" data-command="Stop"><i class="fas fa-stop"></i> Stop</button>
+                    <button class="control-btn" data-command="Right"><i class="fas fa-arrow-right"></i> Right</button>
+                    <div class="spacer"></div>
+                    <button class="control-btn" data-command="Down"><i class="fas fa-arrow-down"></i> Down</button>
+                    <div class="spacer"></div>
+                </div>
+
+                <div class="control-row-rotation">
+                    <button class="control-btn" data-command="RotateL"><i class="fas fa-undo"></i> Rotate L</button>
+                    <button class="control-btn" data-command="RotateR"><i class="fas fa-redo"></i> Rotate R</button>
+                    <button class="control-btn" data-command="AltUp"><i class="fas fa-angle-up"></i> Alt Up</button> 
+                    <button class="control-btn" data-command="AltDown"><i class="fas fa-angle-down"></i> Alt Down</button> 
+                </div>
+
+                <div class="action-buttons-group-simple">
+                    <button class="action-btn action-snap" data-command="Snap"><i class="fas fa-camera"></i> Snap</button>
+                    <button class="action-btn action-video" data-command="Video"><i class="fas fa-video"></i> Video</button>
+                    <button class="action-btn action-goto" data-command="GoTo"><i class="fas fa-map-pin"></i> Go To</button>
+                    <button class="action-btn action-land" data-command="Land"><i class="fas fa-plane-arrival"></i> Land</button>
+                </div>
+            </div>
+            
+            <button class="mark-completed-btn" id="verifyCompletionButton">
+                <i class="fas fa-check-circle"></i> Verify & Mark Completed
+            </button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
